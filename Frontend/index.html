@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="Cristhian Arrieta" content="Agence Test">
+
+  <title>Agence Test</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+  <!-- Consultants panel -->
+  <div class="container-fluid bg-light pb-5 rounded bg-dark">
+    <p class="display-4 text-light text-center">Consultores</p>
+    <div class="container col-12 mt-2 text-center">
+      <div class="row justify-content-center">
+        <p class="text-light mr-1 col-12">Período:</p>
+
+        <select id="fromMm" class="form-control col-2 period">
+        </select>
+        <select id="fromYy" class="form-control col-3 period">
+        </select>
+
+        <p class="col-1 text-light">a</p>
+
+        <select id="toMm" class="form-control col-2 period">
+        </select>
+        <select id="toYy" class="form-control col-3 period">
+        </select>
+
+      </div>
+    </div>
+    <div class="text-center my-3">
+      <button id="relatorioButton" class="btn btn-info"><i class="fa fa-table mr-1"></i>Relatório</button>
+      <button id="graficoButton" class="btn btn-info"><i class="fa fa-bar-chart mr-1"></i>Gráfico</button>
+      <button id="pizzaButton" class="btn btn-info"><i class="fa fa-pie-chart mr-1"></i>Pizza</button>
+    </div>
+
+    <div class="row px-3">
+      <div id="leftPanel" class="col-12 col-md-5 bg-white rounded consultantsPanel">
+
+      </div>
+
+      <div class="d-flex flex-column text-center col-12 col-md-2">
+        <button id="addButton" class="btn btn-outline-success my-1 my-md-auto" onclick="fillPanel('add')">Añadir</button>
+        <button id="delButton" class="btn btn-outline-danger mb-1 my-md-auto" onclick="fillPanel('del')">Eliminar</button>
+      </div>
+
+      <div id="rightPanel" class="col-12 col-md-5 bg-white rounded consultantsPanel">
+
+      </div>
+    </div>
+
+    <!-- Relatorio -->
+    <div id="relatorio" class="container bg-light rounded mt-2"></div>
+
+    <!-- Gráfico panel -->
+    <div id="grafico" class="container bg-light rounded mt-2"></div>
+
+    <!-- Pizza panel -->
+    <div id="pizza" class="container bg-light rounded mt-2"></div>
+
+  </div>
+
+  <!-- JavaScript -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+  <script src="https://momentjs.com/downloads/moment.js"></script>
+  <script src="app.js"></script>
+
+</body>
+
+</html>

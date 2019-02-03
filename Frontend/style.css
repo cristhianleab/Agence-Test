@@ -1,0 +1,14 @@
+.consultantsPanel {
+    height: 150px;
+    overflow-y: scroll;
+}
+
+.tableContainer {
+    height: 400px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+
+.period{
+    max-width: 100px;
+}
