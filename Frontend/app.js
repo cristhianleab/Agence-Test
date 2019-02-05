@@ -2,6 +2,7 @@ let leftPanelArr = new Array();
 let selectionArr = new Array();
 let rightPanelArr = new Array();
 let filteredConsultants = new Array();
+let averageArr = new Array();
 let fromPeriodMm;
 let fromPeriodYy;
 let toPeriodMm;
@@ -52,6 +53,7 @@ function relatorioRequest(consultants) {
         type: 'POST',
         success: function (data, textStatus, jqXHR) {
             console.log("success");
+            averageArr = data;
             filterByDate(data);
             buildRelatorio(filteredConsultants);
         },
@@ -149,7 +151,6 @@ function graficosRequest(consultants, panel) {
         type: 'POST',
         success: function (data, textStatus, jqXHR) {
             console.log("success");
-            console.log(data);
             if (panel == 'grafico') {
                 buildGrafico(data);
             } else {
@@ -190,9 +191,35 @@ function buildGrafico(consultants) {
                 borderColor: 'rgb(255, 99, 132)',
                 data: dataArr,
             }]
-        },
+        }
+    });
 
-        options: {}
+    //Promedio costo fijo
+    let lineData = 0;
+
+    for (let i = 0; i < averageArr.length; i++) {
+        for (let j = 0; j < averageArr[i][4].length; j++) {
+            lineData += parseFloat(averageArr[i][4][j]);
+        }
+    }
+
+    lineData = lineData / averageArr.length;
+
+    let canvas2 = document.createElement('canvas');
+    $("#grafico").append(canvas2);
+
+    let ctx2 = canvas2.getContext('2d');
+    var averageChart = new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: ["Custo fixo promedio"],
+            datasets: [{
+                label: "Custo fixo promedio",
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [lineData],
+            }]
+        }
     });
 }
 
@@ -220,7 +247,7 @@ function buildPizza(consultants) {
             labels: labelsArr,
             datasets: [{
                 label: "Receita total",
-                backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
                 data: dataArr,
             }]
         },
